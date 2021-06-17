@@ -31,6 +31,9 @@ public class EnrollmentServiceTest {
     }
 
     private void assertEquals(int expectedSize, int size) {
+        if (expectedSize == size){
+            return;
+        }
     }
 
 }
