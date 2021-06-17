@@ -9,11 +9,25 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(EasyMockExtension.class)
 public class EnrollmentServiceTest {
 
+    @TestSubject
+    private EnrollmentService enrollmentService = new EnrollmentService();
+
+    @Mock
+    private Course courseMock;
+
     @Test
     public void testEnrollStudentSuccessful() {
 
+        Student student = new Student();
+        int expectedSize = student.getCourseList().size() + 1;
+
+        expect(courseMock.enroll(student)).andReturn(true);
+        replay(courseMock);
+        enrollmentService.enroll(student, courseMock);
+
+
         // TODO implement the test
-        throw new RuntimeException("not implemented yet");
+        //throw new RuntimeException("not implemented yet");
 
     }
 
